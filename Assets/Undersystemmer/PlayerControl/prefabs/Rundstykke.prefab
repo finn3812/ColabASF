@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 4930959178274395793}
   - component: {fileID: 7745081320002154845}
   - component: {fileID: 6173445206022808654}
-  - component: {fileID: 7698790753097235064}
   m_Layer: 0
   m_Name: Rundstykke
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,15 +105,3 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7698790753097235064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2553525498336175167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46a0d9be7961931478fc8115ee22a6e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

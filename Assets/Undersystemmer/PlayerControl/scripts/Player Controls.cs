@@ -9,6 +9,9 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded = true; // Tjekker om spilleren er på jorden
 
+    private GameObject carriedObject = null; // Objekt spilleren bærer
+    public Transform carryPosition; // Position hvor objektet holdes
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Henter Rigidbody-komponenten
@@ -34,6 +37,46 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false; // Spilleren er i luften
+        }
+
+        // Pickup og placement
+        if (Input.GetKeyDown(KeyCode.E)) // Saml op
+        {
+            TryPickupObject();
+        }
+        else if (Input.GetKeyDown(KeyCode.R)) // Placér
+        {
+            PlaceObject();
+        }
+    }
+
+    private void TryPickupObject()
+    {
+        if (carriedObject == null) // Kun forsøg at samle, hvis spilleren ikke allerede bærer noget
+        {
+            Ray ray = new Ray(transform.position, transform.forward); // Stråle foran spilleren
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 2f)) // Tjek for objekt inden for en bestemt afstand
+            {
+                if (hit.collider.CompareTag("Pickup")) // Kun objekter med tagget "Pickup"
+                {
+                    carriedObject = hit.collider.gameObject;
+                    carriedObject.GetComponent<Rigidbody>().isKinematic = true; // Deaktiver fysik
+                    carriedObject.transform.position = carryPosition.position; // Flyt til bæreposition
+                    carriedObject.transform.parent = carryPosition; // Gør objektet til barn af spilleren
+                }
+            }
+        }
+    }
+
+    private void PlaceObject()
+    {
+        if (carriedObject != null) // Kun forsøg at placere, hvis spilleren bærer noget
+        {
+            carriedObject.GetComponent<Rigidbody>().isKinematic = false; // Aktivér fysik igen
+            carriedObject.transform.parent = null; // Fjern objektet fra spilleren
+            carriedObject = null; // Nulstil carriedObject
         }
     }
 
