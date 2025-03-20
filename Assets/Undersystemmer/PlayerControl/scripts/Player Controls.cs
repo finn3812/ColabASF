@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     public float speed = 5f; // Bevægelseshastighed
+    public float jumpForce = 5f; // Kraft til at hoppe
     private Rigidbody rb;
+    private bool isGrounded = true; // Tjekker om spilleren er på jorden
 
     void Start()
     {
@@ -23,5 +25,24 @@ public class PlayerControls : MonoBehaviour
 
         // Flyt objektet
         rb.MovePosition(transform.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void Update()
+    {
+        // Tjek for hop-input og om spilleren er på jorden
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false; // Spilleren er i luften
+        }
+    }
+
+    // Tjek om spilleren rører jorden
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true; // Spilleren er tilbage på jorden
+        }
     }
 }
