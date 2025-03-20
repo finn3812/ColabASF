@@ -37,7 +37,7 @@ public class NPC : MonoBehaviour
 
     }
 
-    void TransitionState(INPCState state)
+    protected void TransitionState(INPCState state)
     {
         currentState?.End(this);
 
