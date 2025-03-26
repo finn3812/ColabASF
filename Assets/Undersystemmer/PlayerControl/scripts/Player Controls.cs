@@ -12,6 +12,8 @@ public class PlayerControls : MonoBehaviour
     private GameObject carriedObject = null; // Objekt spilleren bærer
     public Transform carryPosition; // Position hvor objektet holdes
 
+    private GameObject nearbyObject = null; // Objekt, som spilleren kan samle op
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Henter Rigidbody-komponenten
@@ -42,7 +44,10 @@ public class PlayerControls : MonoBehaviour
         // Pickup og placement
         if (Input.GetKeyDown(KeyCode.E)) // Saml op
         {
-            TryPickupObject();
+            if (carriedObject == null && nearbyObject != null)
+            {
+                PickupObject();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.R)) // Placér
         {
@@ -50,24 +55,12 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private void TryPickupObject()
+    private void PickupObject()
     {
-        if (carriedObject == null) // Kun forsøg at samle, hvis spilleren ikke allerede bærer noget
-        {
-            Ray ray = new Ray(transform.position, transform.forward); // Stråle foran spilleren
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 2f)) // Tjek for objekt inden for en bestemt afstand
-            {
-                if (hit.collider.CompareTag("Pickup")) // Kun objekter med tagget "Pickup"
-                {
-                    carriedObject = hit.collider.gameObject;
-                    carriedObject.GetComponent<Rigidbody>().isKinematic = true; // Deaktiver fysik
-                    carriedObject.transform.position = carryPosition.position; // Flyt til bæreposition
-                    carriedObject.transform.parent = carryPosition; // Gør objektet til barn af spilleren
-                }
-            }
-        }
+        carriedObject = nearbyObject; // Sæt det nærmeste objekt som det bårne objekt
+        carriedObject.GetComponent<Rigidbody>().isKinematic = true; // Deaktiver fysik
+        carriedObject.transform.position = carryPosition.position; // Flyt til bæreposition
+        carriedObject.transform.parent = carryPosition; // Gør objektet til barn af spilleren
     }
 
     private void PlaceObject()
@@ -77,6 +70,22 @@ public class PlayerControls : MonoBehaviour
             carriedObject.GetComponent<Rigidbody>().isKinematic = false; // Aktivér fysik igen
             carriedObject.transform.parent = null; // Fjern objektet fra spilleren
             carriedObject = null; // Nulstil carriedObject
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pickup")) // Hvis objektet er markeret som et Pickup-objekt
+        {
+            nearbyObject = other.gameObject; // Registrer det nærmeste objekt
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Pickup")) // Hvis spilleren forlader området omkring Pickup-objektet
+        {
+            nearbyObject = null; // Fjern referencen til objektet
         }
     }
 
