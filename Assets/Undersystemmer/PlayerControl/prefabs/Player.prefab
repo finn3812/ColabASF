@@ -106,7 +106,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1849241741378907397
 MonoBehaviour:
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 5
-  carryPosition: {fileID: 8579716393638558955}
+  carryPosition: {fileID: 3764947922826124661}
 --- !u!54 &9218352380393497105
 Rigidbody:
   m_ObjectHideFlags: 0
