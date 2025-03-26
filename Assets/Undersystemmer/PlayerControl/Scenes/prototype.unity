@@ -564,6 +564,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rundstykke
       objectReference: {fileID: 0}
+    - target: {fileID: 6173445206022808654, guid: 4ee1b2e701c989a48a9a8347ad232891,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173445206022808654, guid: 4ee1b2e701c989a48a9a8347ad232891,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7446807352697820005, guid: 4ee1b2e701c989a48a9a8347ad232891,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -577,7 +587,7 @@ PrefabInstance:
     - target: {fileID: 7446807352697820005, guid: 4ee1b2e701c989a48a9a8347ad232891,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.43
+      value: -3.217
       objectReference: {fileID: 0}
     - target: {fileID: 7446807352697820005, guid: 4ee1b2e701c989a48a9a8347ad232891,
         type: 3}
