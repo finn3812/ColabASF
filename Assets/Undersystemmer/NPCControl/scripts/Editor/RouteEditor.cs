@@ -27,7 +27,6 @@ public class RouteEditor : Editor
                 DestroyImmediate(t.gameObject);
             }
             route.points.Clear();
-
         }
     }
 
