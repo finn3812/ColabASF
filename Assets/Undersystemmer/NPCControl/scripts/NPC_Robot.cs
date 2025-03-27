@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using HJ;
+using Robot;
 
-namespace HJ
+namespace Robot
 {
     class Idle : INPCState
     {
@@ -16,27 +16,16 @@ namespace HJ
 
     }
 
-    class Rundstykke : INPCState
-    {
-
-    }
-
     class Jagt : INPCState
-    {
-
-    }
-
-    class Forsvind : INPCState
     {
 
     }
 }
 
-public class NPC_HJ : NPC
+public class NPC_Robot : NPC
 {
     Idle Idle = new();
     Roam Roam = new();
-    Rundstykke Rundstykke = new();
     Jagt Jagt = new();
 
     protected override void NPCStart()
@@ -46,6 +35,6 @@ public class NPC_HJ : NPC
 
     protected override void EventHandler()
     {
-        
+
     }
 }
