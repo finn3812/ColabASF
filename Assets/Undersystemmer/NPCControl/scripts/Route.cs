@@ -8,7 +8,7 @@ public class Route : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (points == null)
+        if (points == null || points.Count < 1)
             return;
 
         Gizmos.color = Color.yellow;

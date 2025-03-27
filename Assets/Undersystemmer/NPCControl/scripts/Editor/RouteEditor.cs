@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +18,16 @@ public class RouteEditor : Editor
         if (!editorEnabled)
         {
             EditorGUILayout.HelpBox("Route Editor er deaktiveret", MessageType.Info);
+        }
+        if (GUILayout.Button("Ryd rute"))
+        {
+            List<Transform> points = route.points;
+            foreach (Transform t in points)
+            {
+                DestroyImmediate(t.gameObject);
+            }
+            route.points.Clear();
+
         }
     }
 
