@@ -8,15 +8,18 @@ public class Route : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (points == null || points.Count < 2)
+        if (points == null)
             return;
 
         Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(points.First().position, points.Last().position);
+        Gizmos.DrawSphere(points.Last().position, 0.3f);
+
         for (int i = 0; i < points.Count - 1; i++)
         {
+            Gizmos.DrawSphere(points[i].position, 0.3f);
             if (points[i] != null && points[i + 1] != null)
                 Gizmos.DrawLine(points[i].position, points[i + 1].position);
         }
-        Gizmos.DrawLine(points.First().position, points.Last().position);
     }
 }
