@@ -6,17 +6,17 @@ using Robot;
 
 namespace Robot
 {
-    class Idle : INPCState
+    public class Idle : INPCState
     {
 
     }
 
-    class Roam : INPCState
+    public class Roam : INPCState
     {
 
     }
 
-    class Jagt : INPCState
+    public class Jagt : INPCState
     {
 
     }
@@ -24,9 +24,9 @@ namespace Robot
 
 public class NPC_Robot : NPC
 {
-    Idle Idle = new();
-    Roam Roam = new();
-    Jagt Jagt = new();
+    protected internal Idle Idle = new();
+    protected internal Roam Roam = new();
+    protected internal Jagt Jagt = new();
 
     protected override void NPCStart()
     {
