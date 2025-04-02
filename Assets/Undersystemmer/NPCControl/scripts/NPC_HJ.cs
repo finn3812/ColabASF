@@ -6,27 +6,36 @@ using HJ;
 
 namespace HJ
 {
-    class Idle : INPCState
+    public class Idle : INPCState
+    {
+        public void Begin(NPC NPC) {
+            Debug.Log("Virkern?");
+            if (NPC is NPC_HJ npcHJ)
+            {
+                npcHJ.TransitionState(npcHJ.Roam);
+            }
+        }
+    }
+
+    public class Roam : INPCState
+    {
+        public void Update(NPC NPC)
+        {
+            NPC.PathFind();
+        }
+    }
+
+    public class Rundstykke : INPCState
     {
 
     }
 
-    class Roam : INPCState
+    public class Jagt : INPCState
     {
 
     }
 
-    class Rundstykke : INPCState
-    {
-
-    }
-
-    class Jagt : INPCState
-    {
-
-    }
-
-    class Forsvind : INPCState
+    public class Forsvind : INPCState
     {
 
     }
@@ -34,10 +43,10 @@ namespace HJ
 
 public class NPC_HJ : NPC
 {
-    Idle Idle = new();
-    Roam Roam = new();
-    Rundstykke Rundstykke = new();
-    Jagt Jagt = new();
+    protected internal Idle Idle = new();
+    protected internal Roam Roam = new();
+    protected internal Rundstykke Rundstykke = new();
+    protected internal Jagt Jagt = new();
 
     protected override void NPCStart()
     {
