@@ -1158,6 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   route: {fileID: 687714376}
+  routeOffset: 0
 --- !u!195 &1874528972
 NavMeshAgent:
   m_ObjectHideFlags: 0

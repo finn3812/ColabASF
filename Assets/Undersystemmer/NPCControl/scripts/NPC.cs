@@ -17,10 +17,12 @@ public class NPC : MonoBehaviour
     public INPCState currentState;
     public Route route;
     int currentPoint = 0;
+    public int routeOffset = 0;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        currentPoint = routeOffset;
         agent.SetDestination(route.points[currentPoint].position);
         NPCStart();
     }
