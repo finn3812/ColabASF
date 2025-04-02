@@ -1,3 +1,4 @@
+// Rigitg fin rute editor spørg ikke hvordan det virker, det gør det bare...
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEditor;
