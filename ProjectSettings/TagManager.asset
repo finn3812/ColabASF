@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Pickup
+  - VideoCamera
   layers:
   - Default
   - TransparentFX
