@@ -17,16 +17,18 @@ public class NPC : MonoBehaviour
 {
     public NavMeshAgent agent;
     public INPCState currentState;
-    public Route route;
-    int currentPoint = 0;
+    public Route route; 
     public int routeOffset = 0;
-
     public UnityEvent Bo;
+    public nDebug debug = new();
+    public GameObject player = null;
 
-    public NikUtils.nDebug debug = new();
+    int currentPoint = 0;
 
     private void Awake()
     {
+        player = GameObject.Find("Player"); // Rigtig lort måde at finde spilleren på, men det må gå.
+
         if (this is NPC_Bo)
             return;
         Bo = GameObject.Find("Bo").GetComponent<NPC_Bo>().Dikter;
@@ -82,5 +84,10 @@ public class NPC : MonoBehaviour
 
         currentState = state;
         currentState.Begin(this);
+    }
+
+    float DistanceToPlayer()
+    {
+        return Vector3.Distance(gameObject.transform.position, player.transform.position);
     }
 }
