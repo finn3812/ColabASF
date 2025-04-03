@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Bo;
+using UnityEngine.Events;
 
 namespace Bo
 {
@@ -13,12 +14,19 @@ namespace Bo
 
     public class Roam : INPCState
     {
-
+        public void Update(NPC NPC)
+        {
+            NPC.PathFind();
+        }
     }
 
     public class Jagt : INPCState
     {
-
+        public void Update(NPC NPC)
+        {
+            if (NPC is NPC_Bo npcBo)
+                npcBo.Dikter.Invoke();
+        }
     }
 }
 
@@ -28,9 +36,11 @@ public class NPC_Bo : NPC
     protected internal Roam Roam = new();
     protected internal Jagt Jagt = new();
 
+    public UnityEvent Dikter = new UnityEvent();
+
     protected override void NPCStart()
     {
-        TransitionState(Idle);
+        TransitionState(Roam);
     }
 
     protected override void EventHandler()

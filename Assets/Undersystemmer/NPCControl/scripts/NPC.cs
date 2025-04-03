@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public interface INPCState
 {
@@ -19,17 +20,32 @@ public class NPC : MonoBehaviour
     int currentPoint = 0;
     public int routeOffset = 0;
 
+    public UnityEvent Bo;
+
+    private void Awake()
+    {
+        if (this is NPC_Bo)
+            return;
+        Bo = GameObject.Find("Bo").GetComponent<NPC_Bo>().Dikter;
+        Bo.AddListener(BoDikterer);
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         currentPoint = routeOffset;
-        agent.SetDestination(route.points[currentPoint].position);
+
         NPCStart();
     }
 
     protected virtual void NPCStart()
     {
 
+    }
+
+    void BoDikterer()
+    {
+        Debug.Log("Bo har dikteret");
     }
 
     void Update()
