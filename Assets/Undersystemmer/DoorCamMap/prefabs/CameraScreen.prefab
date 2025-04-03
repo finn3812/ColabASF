@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 5079770847520611990}
   - component: {fileID: 2483072378130800621}
   - component: {fileID: 4258221185754556672}
-  - component: {fileID: 2279320335058211599}
+  - component: {fileID: 3437438509072522804}
   m_Layer: 5
   m_Name: CameraScreen
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2279320335058211599
+--- !u!114 &3437438509072522804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9193602030978090288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 291c29043c05418448ac53190cdf34cf, type: 3}
+  m_Script: {fileID: 11500000, guid: c8cb5ee91a295314e8abd7a374cbb381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraList: []
-  img: {fileID: 706783307230546839}
+  img: {fileID: 0}
   renderTexture: {fileID: 8400000, guid: b065801c29e76924cb6dab34df1d6aab, type: 2}

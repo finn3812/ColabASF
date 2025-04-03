@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Overvaagning2 : MonoBehaviour
 {
 	public List<GameObject> cameraList = new List<GameObject>();
-
-	public RawImage img;
+    private bool playerInRange = false; // To track if the player is within range
+    public RawImage img;
 	public RenderTexture renderTexture;
 
 	private Camera currentCamera;
@@ -30,7 +30,12 @@ public class Overvaagning2 : MonoBehaviour
 
 		{
 
-			if (Input.GetKeyDown(KeyCode.M))
+            if (!playerInRange)
+            {
+                return; // Ignore input if the player is not in range
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
 			{
 				currentCameraIndex++;
 
@@ -77,5 +82,21 @@ public class Overvaagning2 : MonoBehaviour
 			Debug.LogWarning("Camera number is out of range.");
 		}
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) // Assuming the player has the tag "Player"
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
 
 }
