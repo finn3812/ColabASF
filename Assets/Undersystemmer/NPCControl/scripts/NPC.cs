@@ -1,3 +1,4 @@
+using NikUtils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class NPC : MonoBehaviour
 
     public UnityEvent Bo;
 
+    public NikUtils.nDebug debug = new();
+
     private void Awake()
     {
         if (this is NPC_Bo)
@@ -32,6 +35,9 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        debug.debug = true;
+        debug.name = gameObject.name;
+
         agent = GetComponent<NavMeshAgent>();
         currentPoint = routeOffset;
 
@@ -45,7 +51,7 @@ public class NPC : MonoBehaviour
 
     void BoDikterer()
     {
-        Debug.Log("Bo har dikteret");
+        debug.Log("Bo har dikteret");
     }
 
     void Update()
