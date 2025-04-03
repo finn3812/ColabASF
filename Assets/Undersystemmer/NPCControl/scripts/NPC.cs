@@ -13,12 +13,17 @@ public interface INPCState
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPC : MonoBehaviour
 {
-    NavMeshAgent agent;
-    INPCState currentState;
-    
+    public NavMeshAgent agent;
+    public INPCState currentState;
+    public Route route;
+    int currentPoint = 0;
+    public int routeOffset = 0;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        currentPoint = routeOffset;
+        agent.SetDestination(route.points[currentPoint].position);
         NPCStart();
     }
 
@@ -32,12 +37,25 @@ public class NPC : MonoBehaviour
         currentState?.Update(this);
     }
 
+    internal protected void PathFind()
+    {
+        if (agent.remainingDistance < 0.3f)
+        {
+
+            currentPoint++;
+
+            if (currentPoint >= route.points.Count) 
+                currentPoint = 0;
+        }
+        agent.SetDestination(route.points[currentPoint].position);
+    }
+
     protected virtual void EventHandler()
     {
 
     }
 
-    protected void TransitionState(INPCState state)
+    internal protected void TransitionState(INPCState state)
     {
         currentState?.End(this);
 

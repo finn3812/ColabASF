@@ -6,17 +6,32 @@ using Finn;
 
 namespace Finn
 {
-    class Idle : INPCState
+    public class Idle : INPCState
+    {
+        public void Begin(NPC NPC)
+        {
+            Debug.Log("Virkern?");
+            if (NPC is NPC_Finn npcFinn)
+            {
+                npcFinn.TransitionState(npcFinn.Roam);
+            }
+        }
+    }
+
+    public class Roam : INPCState
+    {
+        public void Update(NPC NPC)
+        {
+            NPC.PathFind();
+        }
+    }
+
+    public class Jagt : INPCState
     {
 
     }
 
-    class Roam : INPCState
-    {
-
-    }
-
-    class Jagt : INPCState
+    public class RobotControl : INPCState
     {
 
     }
@@ -24,9 +39,10 @@ namespace Finn
 
 public class NPC_Finn : NPC
 {
-    Idle Idle = new();
-    Roam Roam = new();
-    Jagt Jagt = new();
+    protected internal Idle Idle = new();
+    protected internal Roam Roam = new();
+    protected internal Jagt Jagt = new();
+    protected internal RobotControl RobotControl = new();
 
     protected override void NPCStart()
     {
