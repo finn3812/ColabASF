@@ -9,9 +9,9 @@ namespace HJ
     public class Idle : INPCState
     {
         public void Begin(NPC NPC) {
-            Debug.Log("Virkern?");
             if (NPC is NPC_HJ npcHJ)
             {
+                npcHJ.debug.Log("Virkeren?");
                 npcHJ.TransitionState(npcHJ.Roam);
             }
         }
