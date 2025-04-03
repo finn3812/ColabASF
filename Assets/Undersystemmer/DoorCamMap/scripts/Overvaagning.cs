@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Overvaagning : MonoBehaviour
 {
 	public List<GameObject> cameraList = new List<GameObject>();
-	//public Texture NewTexture;
+
 	public RawImage img;
 	public RenderTexture renderTexture;
 
@@ -19,6 +19,7 @@ public class Overvaagning : MonoBehaviour
 		foreach (GameObject cam in cameras)
 		{
 			cameraList.Add(cam);
+			cam.SetActive(false);
 		}
 
 	}
@@ -49,7 +50,16 @@ public class Overvaagning : MonoBehaviour
 	{
 		if (camNumber >= 0 && camNumber < cameraList.Count)
 		{
+			if(currentCamera != null)
+			{
+				currentCamera.gameObject.SetActive(false);
+			}
+			
 			Camera activeCamera = cameraList[camNumber].GetComponent<Camera>();
+			if (activeCamera.gameObject != null)
+			{
+				activeCamera.gameObject.SetActive(true);	
+			}
 
 			
 			if (currentCamera != null)
