@@ -63,7 +63,6 @@ public class NPC : MonoBehaviour
     {
         if (agent.remainingDistance < 0.3f)
         {
-
             currentPoint++;
 
             if (currentPoint >= route.points.Count) 
