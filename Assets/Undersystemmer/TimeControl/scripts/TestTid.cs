@@ -15,8 +15,8 @@ public class TestTid : MonoBehaviour
     {
         
     }
-    void ModtagEvent()
+    void ModtagEvent(Tid.Modul time)
     {
-        Debug.Log("Det virker");
+        Debug.Log(time);
     }
 }
