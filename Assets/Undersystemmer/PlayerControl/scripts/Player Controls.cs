@@ -49,7 +49,7 @@ public class PlayerControls : MonoBehaviour
                 PickupObject();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.R)) // Placér
+        else if (Input.GetKeyDown(KeyCode.E)) // Placér
         {
             PlaceObject();
         }

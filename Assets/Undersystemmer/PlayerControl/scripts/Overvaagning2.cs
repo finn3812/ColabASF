@@ -35,7 +35,7 @@ public class Overvaagning2 : MonoBehaviour
                 return; // Ignore input if the player is not in range
             }
 
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 currentCameraIndex++;
 
