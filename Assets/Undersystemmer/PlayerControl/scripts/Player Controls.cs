@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     public float speed = 5f; // Bevægelseshastighed
+    public float rotationSpeed = 100f; // Rotationshastighed
     public float jumpForce = 5f; // Kraft til at hoppe
     private Rigidbody rb;
     private bool isGrounded = true; // Tjekker om spilleren er på jorden
@@ -21,15 +22,17 @@ public class PlayerControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Input fra WASD-tasterne
-        float moveHorizontal = Input.GetAxis("Horizontal"); // A/D eller venstre/højre pile
-        float moveVertical = Input.GetAxis("Vertical"); // W/S eller op/ned pile
+        // Input til bevægelse og rotation
+        float moveVertical = Input.GetAxis("Vertical"); // W/S for fremad/bagud
+        float rotationHorizontal = Input.GetAxis("Horizontal"); // A/D for rotation
 
-        // Beregn bevægelsesretningen
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        // Flyt objektet
+        // Bevægelse fremad eller bagud
+        Vector3 movement = transform.forward * moveVertical;
         rb.MovePosition(transform.position + movement * speed * Time.fixedDeltaTime);
+
+        // Rotation til venstre eller højre
+        float rotation = rotationHorizontal * rotationSpeed * Time.fixedDeltaTime;
+        transform.Rotate(0, rotation, 0);
     }
 
     void Update()

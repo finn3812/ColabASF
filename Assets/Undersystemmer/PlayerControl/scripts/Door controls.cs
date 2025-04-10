@@ -28,7 +28,7 @@ public class Doorcontrols : MonoBehaviour
         {
             case State.Idle:
                 animator.SetInteger("state", 0);
-                if (Input.GetKeyDown(KeyCode.O))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     states = State.DoorOpen;
                 }
@@ -36,7 +36,7 @@ public class Doorcontrols : MonoBehaviour
 
             case State.DoorOpen:
                 animator.SetInteger("state", 1);
-                if (Input.GetKeyDown(KeyCode.C))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     states = State.DoorClose;
                 }
@@ -44,7 +44,7 @@ public class Doorcontrols : MonoBehaviour
 
             case State.DoorClose:
                 animator.SetInteger("state", 2);
-                if (Input.GetKeyDown(KeyCode.O))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     states = State.DoorOpen;
                 }
