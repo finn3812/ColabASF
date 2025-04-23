@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float rotationSpeed = 500f;
+
+    Quaternion targetRotation;
 
     CameraController cameraController;
 
-    public float rotationSpeed = 100f; // Rotationshastighed
+    // public float rotationSpeed = 100f; // Rotationshastighed
     public float jumpForce = 5f; // Kraft til at hoppe
     private Rigidbody rb;
     private bool isGrounded = true; // Tjekker om spilleren er på jorden
@@ -33,12 +36,19 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
+        float moveAmount = Mathf.Abs(h) + Mathf.Abs(v);
+
         var moveInput = (new Vector3(h, 0, v)).normalized;
 
         var moveDir = cameraController.transform.rotation * moveInput;
         
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+       if (moveAmount > 0)
+        {
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+            targetRotation = Quaternion.LookRotation(moveDir);
+        }
 
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
 
         // Tjek for hop-input og om spilleren er på jorden
