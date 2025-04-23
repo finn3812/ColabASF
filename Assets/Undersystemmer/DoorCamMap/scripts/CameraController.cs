@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 
-public class PlayerCamera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform followTarget;
 
