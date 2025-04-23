@@ -615,7 +615,7 @@ MonoBehaviour:
   distance: 5
   minVerticalAngle: -45
   maxVerticalAngle: 45
-  framingOffset: {x: 0, y: 0}
+  framingOffset: {x: 0, y: 2}
   invertX: 0
   invertY: 0
 --- !u!1660057539 &9223372036854775807
