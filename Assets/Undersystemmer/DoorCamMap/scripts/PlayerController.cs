@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        Camera.main.GetComponent<CameraController>();
+         cameraController = Camera.main.GetComponent<CameraController>();
     }
     void Update()
     {
@@ -35,7 +35,9 @@ public class PlayerController : MonoBehaviour
 
         var moveInput = (new Vector3(h, 0, v)).normalized;
 
-        transform.position += moveInput * moveSpeed * Time.deltaTime;
+        var moveDir = cameraController.transform.rotation * moveInput;
+        
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
 
 
         // Tjek for hop-input og om spilleren er på jorden
