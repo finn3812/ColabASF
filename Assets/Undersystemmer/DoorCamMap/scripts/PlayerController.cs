@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
 
+
         // Tjek for hop-input og om spilleren er på jorden
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -91,6 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Pickup")) // Hvis spilleren forlader området omkring Pickup-objektet
         {
+            nearbyObject = null; // Fjern referencen til objektet
             nearbyObject = null; // Fjern referencen til objektet
         }
     }
