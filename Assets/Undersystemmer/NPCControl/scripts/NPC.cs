@@ -19,9 +19,11 @@ public class NPC : MonoBehaviour
     public INPCState currentState;
     public Route route; 
     public int routeOffset = 0;
-    public UnityEvent Bo;
+    public UnityEvent<int> Bo;
     public nDebug debug = new();
     public GameObject player = null;
+
+    public int dikteret = 0; 
 
     int currentPoint = 0;
     public Tid.Modul tid; // Vi gør noget farligt og ikke giver den er værdi med det samme :P
@@ -59,9 +61,10 @@ public class NPC : MonoBehaviour
 
     }
 
-    void BoDikterer()
+    protected virtual void BoDikterer(int status)
     {
-        debug.Log("Bo har dikteret");
+        dikteret = status;
+        debug.Log("Bo har dikteret " + dikteret);
     }
 
     void Update()

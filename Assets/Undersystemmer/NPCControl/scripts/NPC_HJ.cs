@@ -32,7 +32,17 @@ namespace HJ
 
     public class Jagt : INPCState
     {
-
+        public void Update(NPC NPC)
+        {
+            if (NPC is NPC_HJ npcHJ)
+            {
+                if (npcHJ.dikteret == 1)
+                {
+                    npcHJ.GOTO(npcHJ.player.transform.position);
+                    return;
+                }
+            }
+        }
     }
 
     public class Forsvind : INPCState
@@ -53,8 +63,17 @@ public class NPC_HJ : NPC
         TransitionState(Idle);
     }
 
+    protected override void BoDikterer(int s)
+    {
+        base.BoDikterer(s);
+        if (s == 1)
+            TransitionState(Jagt);
+        else
+            TransitionState(Idle);
+    }
+
     //protected override void EventHandler()
     //{
-        
+
     //}
 }

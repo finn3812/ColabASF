@@ -38,14 +38,22 @@ namespace Bo
 
     public class Jagt : INPCState
     {
+
+    }
+
+    public class Diktation : INPCState
+    {
         public void Update(NPC NPC)
         {
             if (NPC is NPC_Bo npcBo)
             {
                 if (npcBo.DistanceToPlayer() > 5f)
+                {
+                    npcBo.Dikter.Invoke(0);
                     npcBo.TransitionState(npcBo.Idle);
+                }
 
-                npcBo.Dikter.Invoke();
+                npcBo.Dikter.Invoke(1);
             }
         }
     }
@@ -56,8 +64,9 @@ public class NPC_Bo : NPC
     protected internal Idle Idle = new();
     protected internal Roam Roam = new();
     protected internal Jagt Jagt = new();
+    protected internal Diktation Diktation = new();
 
-    public UnityEvent Dikter = new UnityEvent();
+    public UnityEvent<int> Dikter = new UnityEvent<int>();
 
     public GameObject laerervaerelse;
 
@@ -70,7 +79,7 @@ public class NPC_Bo : NPC
     {
         if (DistanceToPlayer() <= 5f)
         {
-            TransitionState(Jagt);
+            TransitionState(Diktation);
         }
     }
 
