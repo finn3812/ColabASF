@@ -33,8 +33,8 @@ public class NPC_Robot : NPC
         TransitionState(Idle);
     }
 
-    protected override void EventHandler()
-    {
+    //protected override void EventHandler()
+    //{
 
-    }
+    //}
 }

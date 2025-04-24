@@ -24,11 +24,10 @@ public class NPC : MonoBehaviour
     public GameObject player = null;
 
     int currentPoint = 0;
+    public Tid.Modul tid; // Vi gør noget farligt og ikke giver den er værdi med det samme :P
 
     private void Awake()
     {
-        player = GameObject.Find("Player"); // Rigtig lort måde at finde spilleren på, men det må gå.
-
         if (this is NPC_Bo)
             return;
         Bo = GameObject.Find("Bo").GetComponent<NPC_Bo>().Dikter;
@@ -37,6 +36,10 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        //player = PlayerController.instance.gameObject;
+
+        Tid.instance.TimeHasChanged.AddListener(EventHandler);
+
         debug.debug = true;
         debug.name = gameObject.name;
 
@@ -51,6 +54,11 @@ public class NPC : MonoBehaviour
 
     }
 
+    protected virtual void NPCUpdate()
+    {
+
+    }
+
     void BoDikterer()
     {
         debug.Log("Bo har dikteret");
@@ -59,6 +67,7 @@ public class NPC : MonoBehaviour
     void Update()
     {
         currentState?.Update(this);
+        NPCUpdate();
     }
 
     internal protected void PathFind()
@@ -73,9 +82,15 @@ public class NPC : MonoBehaviour
         agent.SetDestination(route.points[currentPoint].position);
     }
 
-    protected virtual void EventHandler()
+    internal protected void GOTO(Vector3 pos)
     {
+        agent.SetDestination(pos);
+    }
 
+    protected virtual void EventHandler(Tid.Modul modul)
+    {
+        tid = modul;
+        debug.Log(tid.ToString());
     }
 
     internal protected void TransitionState(INPCState state)
@@ -86,7 +101,7 @@ public class NPC : MonoBehaviour
         currentState.Begin(this);
     }
 
-    float DistanceToPlayer()
+    internal protected float DistanceToPlayer()
     {
         return Vector3.Distance(gameObject.transform.position, player.transform.position);
     }

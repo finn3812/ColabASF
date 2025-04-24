@@ -49,8 +49,8 @@ public class NPC_Finn : NPC
         TransitionState(Idle);
     }
 
-    protected override void EventHandler()
-    {
+    //protected override void EventHandler()
+    //{
 
-    }
+    //}
 }

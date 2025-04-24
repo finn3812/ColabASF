@@ -53,8 +53,8 @@ public class NPC_HJ : NPC
         TransitionState(Idle);
     }
 
-    protected override void EventHandler()
-    {
+    //protected override void EventHandler()
+    //{
         
-    }
+    //}
 }

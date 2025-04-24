@@ -4,12 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 using Bo;
 using UnityEngine.Events;
+using TMPro.EditorUtilities;
 
 namespace Bo
 {
     public class Idle : INPCState
     {
+        public void Update(NPC NPC)
+        {
+            if (NPC is NPC_Bo npcBo)
+            {
+                if (npcBo.tid == Tid.Modul.Idehistorie)
+                    npcBo.TransitionState(npcBo.Roam);
 
+                npcBo.GOTO(npcBo.laerervaerelse.transform.position);
+            }
+        }
     }
 
     public class Roam : INPCState
@@ -17,6 +27,12 @@ namespace Bo
         public void Update(NPC NPC)
         {
             NPC.PathFind();
+
+            if (NPC is NPC_Bo npcBo)
+            {
+                if (npcBo.tid != Tid.Modul.Idehistorie)
+                    npcBo.TransitionState(npcBo.Idle);
+            }
         }
     }
 
@@ -25,7 +41,12 @@ namespace Bo
         public void Update(NPC NPC)
         {
             if (NPC is NPC_Bo npcBo)
+            {
+                if (npcBo.DistanceToPlayer() > 5f)
+                    npcBo.TransitionState(npcBo.Idle);
+
                 npcBo.Dikter.Invoke();
+            }
         }
     }
 }
@@ -38,13 +59,23 @@ public class NPC_Bo : NPC
 
     public UnityEvent Dikter = new UnityEvent();
 
+    public GameObject laerervaerelse;
+
     protected override void NPCStart()
     {
-        TransitionState(Roam);
+        TransitionState(Idle);
     }
 
-    protected override void EventHandler()
+    protected override void NPCUpdate()
     {
-
+        if (DistanceToPlayer() <= 5f)
+        {
+            TransitionState(Jagt);
+        }
     }
+
+    //protected override void EventHandler()
+    //{
+
+    //}
 }
