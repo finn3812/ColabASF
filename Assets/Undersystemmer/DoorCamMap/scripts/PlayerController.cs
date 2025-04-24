@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject nearbyObject = null; // Objekt, som spilleren kan samle op
 
+    public static PlayerController instance { get; private set; }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Henter Rigidbody-komponenten
@@ -29,6 +31,15 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
          cameraController = Camera.main.GetComponent<CameraController>();
+
+        if (instance != null && this != instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
     void Update()
     {
