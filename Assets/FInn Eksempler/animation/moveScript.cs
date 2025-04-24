@@ -26,6 +26,7 @@ public class moveScript : MonoBehaviour
         controller.Move(transform.forward * v * Time.deltaTime * speed);
         
         
+
         switch(states)
         {
             case state.idle:
