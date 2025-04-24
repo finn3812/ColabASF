@@ -44,7 +44,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -336,28 +336,28 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Old Man Idle(Clone)
+    - name: Finn(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Light
-      parentName: Old Man Idle(Clone)
+      parentName: Finn(Clone)
       position: {x: -4.0762453, y: 5.903862, z: -1.005454}
       rotation: {x: 0.52327543, y: -0.34203392, z: 0.72694236, w: 0.28416622}
       scale: {x: 100.00001, y: 100, z: 100}
     - name: Camera
-      parentName: Old Man Idle(Clone)
+      parentName: Finn(Clone)
       position: {x: -7.3588915, y: 4.958309, z: 6.925791}
       rotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
       scale: {x: 100, y: 100.00001, z: 99.99999}
     - name: 3DModel
-      parentName: Old Man Idle(Clone)
+      parentName: Finn(Clone)
       position: {x: -0, y: 0, z: 0.11350865}
       rotation: {x: -0.120554574, y: 0.046043437, z: 0.011883766, w: 0.99156713}
       scale: {x: 99.99999, y: 100, z: 100}
     - name: mixamorig:Hips
-      parentName: Old Man Idle(Clone)
+      parentName: Finn(Clone)
       position: {x: 0.00016633447, y: 0.7700857, z: -0.05887941}
       rotation: {x: -0.005910814, y: -0.041042477, z: -0.00024279657, w: 0.99913996}
       scale: {x: 0.9999999, y: 0.99999994, z: 1}
