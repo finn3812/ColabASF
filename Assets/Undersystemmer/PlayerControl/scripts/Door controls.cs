@@ -39,6 +39,7 @@ public class Doorcontrols : MonoBehaviour
                 animator.SetInteger("state", 1);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    audiomanager.Instance.PlaySound("door creaking", 0.5f);
                     states = State.DoorClose;
                 }
                 break;
@@ -47,6 +48,7 @@ public class Doorcontrols : MonoBehaviour
                 animator.SetInteger("state", 2);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    audiomanager.Instance.PlaySound("door creaking", 0.5f);
                     states = State.DoorOpen;
                 }
                 break;
