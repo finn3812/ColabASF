@@ -108,4 +108,9 @@ public class NPC : MonoBehaviour
     {
         return Vector3.Distance(gameObject.transform.position, player.transform.position);
     }
+
+    internal protected void Hunt()
+    {
+        GOTO(player.transform.position);
+    }
 }

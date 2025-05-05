@@ -28,7 +28,18 @@ namespace Finn
 
     public class Jagt : INPCState
     {
-
+        public void Update(NPC NPC)
+        {
+            if (NPC is NPC_Finn npcF)
+            {
+                if (npcF.dikteret == 1)
+                {
+                    npcF.GOTO(npcF.player.transform.position);
+                    return;
+                }
+                npcF.Hunt();
+            }
+        }
     }
 
     public class RobotControl : INPCState
@@ -47,6 +58,22 @@ public class NPC_Finn : NPC
     protected override void NPCStart()
     {
         TransitionState(Idle);
+    }
+
+    protected override void NPCUpdate()
+    {
+        base.NPCUpdate();
+        if (DistanceToPlayer() < 5f)
+            TransitionState(Jagt);
+    }
+
+    protected override void BoDikterer(int s)
+    {
+        base.BoDikterer(s);
+        if (s == 1)
+            TransitionState(Jagt);
+        else
+            TransitionState(Idle);
     }
 
     //protected override void EventHandler()

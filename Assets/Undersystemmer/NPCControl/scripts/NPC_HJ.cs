@@ -41,6 +41,7 @@ namespace HJ
                     npcHJ.GOTO(npcHJ.player.transform.position);
                     return;
                 }
+                npcHJ.Hunt();
             }
         }
     }
@@ -61,6 +62,13 @@ public class NPC_HJ : NPC
     protected override void NPCStart()
     {
         TransitionState(Idle);
+    }
+
+    protected override void NPCUpdate()
+    {
+        base.NPCUpdate();
+        if (DistanceToPlayer() < 5f)
+            TransitionState(Jagt);
     }
 
     protected override void BoDikterer(int s)
