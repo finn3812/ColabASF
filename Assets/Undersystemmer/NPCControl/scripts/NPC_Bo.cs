@@ -51,6 +51,8 @@ namespace Bo
                 {
                     npcBo.Dikter.Invoke(0);
                     npcBo.TransitionState(npcBo.Idle);
+
+                    return;
                 }
 
                 npcBo.Dikter.Invoke(1);
@@ -82,9 +84,4 @@ public class NPC_Bo : NPC
             TransitionState(Diktation);
         }
     }
-
-    //protected override void EventHandler()
-    //{
-
-    //}
 }

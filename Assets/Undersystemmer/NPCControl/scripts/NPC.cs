@@ -38,7 +38,7 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        //player = PlayerController.instance.gameObject;
+        player = PlayerController.instance.gameObject;
 
         Tid.instance.TimeHasChanged.AddListener(EventHandler);
 

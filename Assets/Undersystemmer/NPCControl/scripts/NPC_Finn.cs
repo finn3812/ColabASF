@@ -38,6 +38,9 @@ namespace Finn
                     return;
                 }
                 npcF.Hunt();
+
+                if (npcF.DistanceToPlayer() > 5f)
+                    npcF.TransitionState(npcF.Idle);
             }
         }
     }
@@ -75,9 +78,4 @@ public class NPC_Finn : NPC
         else
             TransitionState(Idle);
     }
-
-    //protected override void EventHandler()
-    //{
-
-    //}
 }
