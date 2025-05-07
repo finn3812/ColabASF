@@ -29,7 +29,7 @@ public class Tid : MonoBehaviour
      
     DateTime specificTime;
     public float TimeScale = 10;
-    public float waitTime = 10f; // Tiden i sekunder
+    public float waitTime = 5f; // Tiden i sekunder
     private float timer = 0f;
     Time time;
     public UnityEvent<Modul> TimeHasChanged = new UnityEvent<Modul>();
