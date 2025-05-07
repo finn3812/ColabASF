@@ -7,6 +7,11 @@ public class Minimap : MonoBehaviour
 
     public Transform player;
 
+    private void Start()
+    {
+        player = PlayerController.instance.gameObject.transform;
+    }
+
     void LateUpdate ()
     {
         Vector3 newPosition = player.position;
