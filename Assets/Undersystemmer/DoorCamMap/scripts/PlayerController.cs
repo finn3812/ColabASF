@@ -57,9 +57,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += moveDir * moveSpeed * Time.deltaTime;
             targetRotation = Quaternion.LookRotation(moveDir);
+            audiomanager.Instance.PlaySound("walking", 0.5f);
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
 
         // Tjek for hop-input og om spilleren er på jorden

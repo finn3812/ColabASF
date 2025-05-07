@@ -12,6 +12,8 @@ public class audiomanager : MonoBehaviour
 
     private Dictionary<string, AudioClip> clipDictionary = new Dictionary<string, AudioClip>();
 
+    private bool canPlaySound = true; // Flag to control sound playback timing
+
     private void Awake()
     {
         if (Instance == null)
@@ -37,14 +39,28 @@ public class audiomanager : MonoBehaviour
 
     public void PlaySound(string soundName, float volume = 1f)
     {
+        if (!canPlaySound)
+        {
+            Debug.Log("PlaySound is on cooldown.");
+            return;
+        }
+
         if (clipDictionary.TryGetValue(soundName, out AudioClip clip))
         {
             audioSource.PlayOneShot(clip, volume);
+            StartCoroutine(SoundCooldown());
         }
         else
         {
             Debug.LogWarning($"Sound '{soundName}' not found in AudioManager!");
         }
+    }
+
+    private IEnumerator SoundCooldown()
+    {
+        canPlaySound = false; // Set the flag to false
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        canPlaySound = true; // Reset the flag
     }
 
     public void PlaySoundWithFadeIn(string soundName, float fadeDuration, float volume = 1f)

@@ -439,6 +439,26 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 916770992}
+    - target: {fileID: 9106887775031666744, guid: b3e35ccc6e67709448a75be77607cfb5,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106887775031666744, guid: b3e35ccc6e67709448a75be77607cfb5,
+        type: 3}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 69f9f36160a38184280015cbe22ec04d, type: 3}
+    - target: {fileID: 9106887775031666744, guid: b3e35ccc6e67709448a75be77607cfb5,
+        type: 3}
+      propertyPath: sounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: cc9bf9dab1fd4194ebd1dce623da8b9e, type: 3}
+    - target: {fileID: 9106887775031666744, guid: b3e35ccc6e67709448a75be77607cfb5,
+        type: 3}
+      propertyPath: sounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: cb8c7610427d9ca46b71c342e9ae3ed1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -618,7 +638,7 @@ PrefabInstance:
     - target: {fileID: 3120613123088690868, guid: 5c726da4cf5cf68458af30b4a0431464,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5691347
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 3120613123088690868, guid: 5c726da4cf5cf68458af30b4a0431464,
         type: 3}
