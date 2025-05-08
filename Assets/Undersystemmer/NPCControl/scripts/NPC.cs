@@ -112,5 +112,6 @@ public class NPC : MonoBehaviour
     internal protected void Hunt()
     {
         GOTO(player.transform.position);
+        audiomanager.Instance.PlaySound("tension building", 1f);
     }
 }

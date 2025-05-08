@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Henter Rigidbody-komponenten
-        audiomanager.Instance.PlaySound("intro music", 0.5f);
+        audiomanager.Instance.PlaySound("intro music", 1f);
     }
 
     private void Awake()

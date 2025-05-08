@@ -59,7 +59,7 @@ public class audiomanager : MonoBehaviour
     private IEnumerator SoundCooldown()
     {
         canPlaySound = false; // Set the flag to false
-        yield return new WaitForSeconds(1f); // Wait for 1 second
+        yield return new WaitForSeconds(15f); // Wait for 15 second
         canPlaySound = true; // Reset the flag
     }
 
