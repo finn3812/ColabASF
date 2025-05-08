@@ -55,7 +55,7 @@ public class Animationiguess : MonoBehaviour
     void Update()
     {
 
-        //walk
+        /*//walk
         if (Input.GetKeyDown(KeyCode.W))
         {
             animator.SetInteger("State", 1);
@@ -120,9 +120,22 @@ public class Animationiguess : MonoBehaviour
         {
             animator.SetInteger("State", 0);
 
+        }*/
+
+
+    }
+
+    public void setanimation(string animation)
+    {
+        if (animation == "Walk")
+        {
+            animator.SetInteger("State", 1);
         }
 
-
+        if (animation == "Idle")
+        {
+            animator.SetInteger("State", 0);
+        }
     }
 }
 
