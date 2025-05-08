@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 500f;
 
     Quaternion targetRotation;
-
     CameraController cameraController;
 
     // public float rotationSpeed = 100f; // Rotationshastighed
