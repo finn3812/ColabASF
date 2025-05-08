@@ -6,7 +6,7 @@ using TMPro;
 public class TimeStatus : MonoBehaviour
 {
     public TMP_Text clockText;
-    bool IsStatusActive=false;
+    bool IsStatusActive=true;
     // Start is called before the first frame update
     void Start()
     {
